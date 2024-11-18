@@ -15,8 +15,26 @@ class MyComponent extends React.Component {
   };
 
   handleClick(event) {
-    console.log(event.target);
+    console.log("My name is " + this.state.name);
+    console.log("age: " + this.state.age);
+
+    this.setState({
+      name: "Hữu Nghĩa", //sử dụng hàm setSate để cập nhật các thuộc tính cúa state
+      age: Math.random() * 100,
+    });
   }
+
+  handleOnchangeInput = (event) => {
+    this.setState({
+      name: event.target.value,
+    });
+    console.log(event.target.value);
+  };
+
+  handleOnSubmit = (event) => {
+    event.preventDefault(); //Hàm ngăn load lại trang
+    console.log(this.state);
+  };
 
   //JSX: cho phép viết code js bên trong html
   render() {
@@ -28,7 +46,13 @@ class MyComponent extends React.Component {
         My first component
         {/* sử dụng dấu {} ctrinh hiểu rằng đang muốn sử dụng viết logic */}
         My name is {this.state.name} and I'm from {this.state.address}
-        <button onClick={this.handleClick}>Click me</button>
+        <form onSubmit={(event) => this.handleOnSubmit(event)}>
+          <input
+            type="text"
+            onChange={(event) => this.handleOnchangeInput(event)}
+          ></input>
+          <button>Submit</button>
+        </form>
       </div>
     );
   }
