@@ -14,6 +14,10 @@ class MyComponent extends React.Component {
     age: 21,
   };
 
+  handleClick(event) {
+    console.log(event.target);
+  }
+
   //JSX: cho phép viết code js bên trong html
   render() {
     //Hàm render quy định nội dung component trả ra
@@ -24,6 +28,7 @@ class MyComponent extends React.Component {
         My first component
         {/* sử dụng dấu {} ctrinh hiểu rằng đang muốn sử dụng viết logic */}
         My name is {this.state.name} and I'm from {this.state.address}
+        <button onClick={this.handleClick}>Click me</button>
       </div>
     );
   }
