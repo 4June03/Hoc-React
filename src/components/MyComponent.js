@@ -3,24 +3,32 @@
 
 import React from "react"; //import react
 
+class MyComponent extends React.Component {
+  //Kế thừa lại tất cả tính năng của React component
 
+  //state là một js Object
+  //dùng để lưu trữ và qly dữ liệu thay đổi theo thời gian trong một component
+  state = {
+    name: "Nghĩa",
+    address: "Lạng Sơn",
+    age: 21,
+  };
 
-class MyComponent extends React.Component{ //Kế thừa lại tất cả tính năng của React component
-    //JSX: cho phép viết code js bên trong html
-    render(){ //Hàm render quy định nội dung component trả ra
-        return ( //Trả ra 1 khối Html
-            //hạn chế của JSX: chỉ trả về được 1 phần tử html
-            <div>My first component
-                {/* sử dụng dấu {} ctrinh hiểu rằng đang muốn sử dụng viết logic */}
-                {
-                    Math.random()
-                }
-            </div>
-
-        );
-    }
+  //JSX: cho phép viết code js bên trong html
+  render() {
+    //Hàm render quy định nội dung component trả ra
+    return (
+      //Trả ra 1 khối Html
+      //hạn chế của JSX: chỉ trả về được 1 phần tử html
+      <div>
+        My first component
+        {/* sử dụng dấu {} ctrinh hiểu rằng đang muốn sử dụng viết logic */}
+        My name is {this.state.name} and I'm from {this.state.address}
+      </div>
+    );
+  }
 }
 
 //Muốn sử dụng component này thì phải export
 //môi lần gọi file MyComponent.js thì sẽ hiểu muốn sử dụng MyComponet
-export default MyComponent; 
+export default MyComponent;
