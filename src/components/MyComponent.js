@@ -6,12 +6,18 @@ import UserInfor from "./UserInfor";
 import DisplayInfor from "./DisplayInfor2";
 
 class MyComponent extends React.Component {
-  //Kế thừa lại tất cả tính năng của React component
+  state = {
+    listUser: [
+      { id: 1, name: "Huu Nghia", age: 21 },
+      { id: 2, name: "Huu Nghia2", age: 21 },
+      { id: 3, name: "Huu Nghia3", age: 21 },
+      { id: 4, name: "Huu Nghia4", age: 21 },
+    ],
+  };
 
   //JSX: cho phép viết code js bên trong html
   render() {
     //Hàm render quy định nội dung component trả ra
-    const myInfor = ["ab", "c", "d"];
 
     return (
       //Trả ra 1 khối Html
@@ -22,7 +28,7 @@ class MyComponent extends React.Component {
         <DisplayInfor
           name="Huu nghia"
           age="21"
-          myInfor={myInfor}
+          users={this.state.listUser}
         ></DisplayInfor>
       </div>
     );
