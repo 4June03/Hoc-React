@@ -29,14 +29,17 @@ class MyComponent extends React.Component {
       //Trả ra 1 khối Html
       //hạn chế của JSX: chỉ trả về được 1 phần tử html
       //truyền function từ component cha sang con (khi truyền không có '()' của function)
-      <div>
-        <UserInfor handleAddNewUser={this.handleAddNewUser} />
-        <DisplayInfor
-          name="Huu nghia"
-          age="21"
-          users={this.state.listUser}
-        ></DisplayInfor>
-      </div>
+      <>
+        <div className="a">
+          <UserInfor handleAddNewUser={this.handleAddNewUser} />
+          <DisplayInfor
+            name="Huu nghia"
+            age="21"
+            users={this.state.listUser}
+          ></DisplayInfor>
+        </div>
+        <div className="b"></div>
+      </>
     );
   }
 }

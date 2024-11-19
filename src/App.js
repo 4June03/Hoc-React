@@ -8,7 +8,7 @@ import React from "react"; //Để viết class Component thì cần import thư
 class App extends React.Component {
   render() {
     return (
-      <div>
+      <div className="app-container">
         Hello world!
         {/* sử dụng component như 1 tag đặc biệt của html */}
         <MyComponent></MyComponent>
