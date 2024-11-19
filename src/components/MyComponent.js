@@ -3,6 +3,7 @@
 
 import React from "react"; //import react
 import UserInfor from "./UserInfor";
+import DisplayInfor from "./DisplayInfor2";
 
 class MyComponent extends React.Component {
   //Kế thừa lại tất cả tính năng của React component
@@ -10,11 +11,19 @@ class MyComponent extends React.Component {
   //JSX: cho phép viết code js bên trong html
   render() {
     //Hàm render quy định nội dung component trả ra
+    const myInfor = ["ab", "c", "d"];
+
     return (
       //Trả ra 1 khối Html
       //hạn chế của JSX: chỉ trả về được 1 phần tử html
       <div>
-        <UserInfor></UserInfor>
+        <UserInfor />
+        {/* truyen du lieu sang Component con */}
+        <DisplayInfor
+          name="Huu nghia"
+          age="21"
+          myInfor={myInfor}
+        ></DisplayInfor>
       </div>
     );
   }
