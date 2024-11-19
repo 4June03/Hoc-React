@@ -26,21 +26,40 @@ class UserInfor extends React.Component {
     console.log(event.target.value);
   };
 
+  handleOnchangeAge = (event) => {
+    this.setState({
+      age: event.target.value,
+    });
+  };
+
   handleOnSubmit = (event) => {
     event.preventDefault(); //Hàm ngăn load lại trang
     console.log(this.state);
+    this.props.handleAddNewUser({
+      id: Math.random() * 100 + 1,
+      name: this.state.name,
+      age: this.state.age,
+    });
   };
 
   render() {
     return (
       <div>
         {/* sử dụng dấu {} ctrinh hiểu rằng đang muốn sử dụng viết logic */}
-        My name is {this.state.name} and I'm from {this.state.address}
+        My name is {this.state.name} and I'm from {this.state.age}
         <form onSubmit={(event) => this.handleOnSubmit(event)}>
           <input
+            value={this.state.name}
             type="text"
             onChange={(event) => this.handleOnchangeInput(event)}
           ></input>
+
+          <input
+            value={this.state.age}
+            type="text"
+            onChange={(event) => this.handleOnchangeAge(event)}
+          ></input>
+
           <button>Submit</button>
         </form>
       </div>

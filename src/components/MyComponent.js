@@ -15,6 +15,12 @@ class MyComponent extends React.Component {
     ],
   };
 
+  handleAddNewUser = (object) => {
+    this.setState({
+      listUser: [object, ...this.state.listUser], //Sử dùng spread syntax để copy mảng cũ
+    });
+  };
+
   //JSX: cho phép viết code js bên trong html
   render() {
     //Hàm render quy định nội dung component trả ra
@@ -22,9 +28,9 @@ class MyComponent extends React.Component {
     return (
       //Trả ra 1 khối Html
       //hạn chế của JSX: chỉ trả về được 1 phần tử html
+      //truyền function từ component cha sang con (khi truyền không có '()' của function)
       <div>
-        <UserInfor />
-        {/* truyen du lieu sang Component con */}
+        <UserInfor handleAddNewUser={this.handleAddNewUser} />
         <DisplayInfor
           name="Huu nghia"
           age="21"
