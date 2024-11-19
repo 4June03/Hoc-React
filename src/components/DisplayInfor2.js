@@ -1,4 +1,5 @@
 import React from "react";
+import logo from "./../logo.svg"; //Import ảnh
 
 class DisplayInfor extends React.Component {
   state = {
@@ -20,6 +21,7 @@ class DisplayInfor extends React.Component {
       //truyen du lieu tu component cha sang con
       <div>
         <div>
+          <img src={logo} height="100px" width="100px"></img>
           <button onClick={() => this.handleHideShow()}>
             {this.state.isShowList === true ? "Hide list" : "Show list"}
           </button>
