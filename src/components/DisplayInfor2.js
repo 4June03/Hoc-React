@@ -36,12 +36,15 @@ import logo from "./../logo.svg"; //Import ảnh
 //React tự động truyền props
 //ĐƯợc gọi là Stateless vì không có state như class componet
 const DisplayInfor = (props) => {
-  const { users } = props;
-  console.table(users);
   const [isShowList, setIsShowList] = useState(true);
 
   const handleHideShowList = () => {
     setIsShowList(!isShowList);
+  };
+
+  const handleDeleteUser = (userId) => {
+    let cloneList = props.users.filter((item) => item.id !== userId);
+    props.setUsers(cloneList);
   };
 
   return (
@@ -56,11 +59,14 @@ const DisplayInfor = (props) => {
         <div>
           {
             //dùng vòng lặp hiển thị ra list user
-            users.map((user) => {
+            props.users.map((user) => {
               return (
                 <div key={user.id}>
                   <div>My name is {user.name}</div>
                   <div>My age is {user.age}</div>
+                  <button onClick={() => handleDeleteUser(user.id)}>
+                    Delete
+                  </button>
                   <hr />
                 </div>
               );

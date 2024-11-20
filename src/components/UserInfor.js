@@ -1,70 +1,117 @@
-import React from "react";
+import React, { useState } from "react";
 
-class UserInfor extends React.Component {
-  //state là một js Object
-  //dùng để lưu trữ và qly dữ liệu thay đổi theo thời gian trong một component
-  state = {
-    name: "Nghĩa",
-    address: "Lạng Sơn",
-    age: 21,
+// class UserInfor extends React.Component {
+//   //state là một js Object
+//   //dùng để lưu trữ và qly dữ liệu thay đổi theo thời gian trong một component
+//   state = {
+//     name: "Nghĩa",
+//     address: "Lạng Sơn",
+//     age: 21,
+//   };
+
+//   handleClick(event) {
+//     console.log("My name is " + this.state.name);
+//     console.log("age: " + this.state.age);
+
+//     this.setState({
+//       name: "Hữu Nghĩa", //sử dụng hàm setSate để cập nhật các thuộc tính cúa state
+//       age: Math.random() * 100,
+//     });
+//   }
+
+//   handleOnchangeInput = (event) => {
+//     this.setState({
+//       name: event.target.value,
+//     });
+//     console.log(event.target.value);
+//   };
+
+//   handleOnchangeAge = (event) => {
+//     this.setState({
+//       age: event.target.value,
+//     });
+//   };
+
+//   handleOnSubmit = (event) => {
+//     event.preventDefault(); //Hàm ngăn load lại trang
+//     console.log(this.state);
+//     this.props.handleAddNewUser({
+//       id: Math.random() * 100 + 1,nm,
+//       name: this.state.name,
+//       age: this.state.age,
+//     });
+//   };
+
+//   render() {
+//     return (
+//       <div>
+//         {/* sử dụng dấu {} ctrinh hiểu rằng đang muốn sử dụng viết logic */}
+//         My name is {this.state.name} and I'm from {this.state.age}
+//         <form onSubmit={(event) => this.handleOnSubmit(event)}>
+//           <input
+//             value={this.state.name}
+//             type="text"
+//             onChange={(event) => this.handleOnchangeInput(event)}
+//           ></input>
+
+//           <input
+//             value={this.state.age}
+//             type="text"
+//             onChange={(event) => this.handleOnchangeAge(event)}
+//           ></input>
+
+//           <button>Submit</button>
+//         </form>
+//       </div>
+//     );
+//   }
+// }
+
+//Viết dưới dạng functional compone
+
+const UserInfor = ({ handleAddNewUser }) => {
+  const [name, setName] = useState("nghia");
+  const [age, setAge] = useState(20);
+  const [address, setAddress] = useState("Lang Son");
+
+  const handleOnchangeName = (event) => {
+    setName(event.target.value);
   };
 
-  handleClick(event) {
-    console.log("My name is " + this.state.name);
-    console.log("age: " + this.state.age);
-
-    this.setState({
-      name: "Hữu Nghĩa", //sử dụng hàm setSate để cập nhật các thuộc tính cúa state
-      age: Math.random() * 100,
-    });
-  }
-
-  handleOnchangeInput = (event) => {
-    this.setState({
-      name: event.target.value,
-    });
-    console.log(event.target.value);
+  const handleOnchangeAge = (event) => {
+    setAge(event.target.value);
   };
 
-  handleOnchangeAge = (event) => {
-    this.setState({
-      age: event.target.value,
-    });
-  };
+  const handleOnSubmit = (event) => {
+    event.preventDefault();
 
-  handleOnSubmit = (event) => {
-    event.preventDefault(); //Hàm ngăn load lại trang
-    console.log(this.state);
-    this.props.handleAddNewUser({
+    handleAddNewUser({
       id: Math.random() * 100 + 1,
-      name: this.state.name,
-      age: this.state.age,
+      name: name,
+      age: age,
     });
   };
 
-  render() {
-    return (
-      <div>
-        {/* sử dụng dấu {} ctrinh hiểu rằng đang muốn sử dụng viết logic */}
-        My name is {this.state.name} and I'm from {this.state.age}
-        <form onSubmit={(event) => this.handleOnSubmit(event)}>
-          <input
-            value={this.state.name}
-            type="text"
-            onChange={(event) => this.handleOnchangeInput(event)}
-          ></input>
+  return (
+    <>
+      My name is {name} and I'm from {age}
+      <form onSubmit={(event) => handleOnSubmit(event)}>
+        <input
+          value={name}
+          type="text"
+          onChange={(event) => handleOnchangeName(event)}
+        ></input>
 
-          <input
-            value={this.state.age}
-            type="text"
-            onChange={(event) => this.handleOnchangeAge(event)}
-          ></input>
+        <input
+          value={age}
+          type="text"
+          onChange={(event) => handleOnchangeAge(event)}
+        ></input>
 
-          <button>Submit</button>
-        </form>
-      </div>
-    );
-  }
-}
+        <button>Submit</button>
+      </form>
+    </>
+  );
+};
 
 export default UserInfor;
