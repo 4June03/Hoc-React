@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "./../logo.svg"; //Import ảnh
 
 // class DisplayInfor extends React.Component {
@@ -38,9 +38,21 @@ import logo from "./../logo.svg"; //Import ảnh
 const DisplayInfor = (props) => {
   const { users } = props;
   console.table(users);
+  const [isShowList, setIsShowList] = useState(true);
+
+  const handleHideShowList = () => {
+    setIsShowList(!isShowList);
+  };
+
   return (
     <div>
-      {true && (
+      <div>
+        <button onClick={() => handleHideShowList()}>
+          {isShowList === true ? "Hide list" : "Show list"}
+        </button>
+      </div>
+
+      {isShowList && (
         <div>
           {
             //dùng vòng lặp hiển thị ra list user
