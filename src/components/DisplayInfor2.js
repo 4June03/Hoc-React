@@ -1,34 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "./../logo.svg"; //Import ảnh
-
-// class DisplayInfor extends React.Component {
-//   render() {
-//     //Sử dụng destructuring array/object để lấy ra các thuộc tính của props -> tối ưu code nếu truyền nhiều
-//     const { users } = this.props; //Lấy ra users đã truyền từ lớp cha
-//     console.table(users);
-//     return (
-//       //props => viet tat cua properties
-//       //truyen du lieu tu component cha sang con
-//       <div>
-//         {true && (
-//           <div>
-//             {
-//               //dùng vòng lặp hiển thị ra list user
-//               users.map((user) => {
-//                 return (
-//                   <div key={user.id}>
-//                     <div>My name is {user.name}</div>
-//                     <div>My age is {user.age}</div>
-//                   </div>
-//                 );
-//               })
-//             }
-//           </div>
-//         )}
-//       </div>
-//     );
-//   }
-// }
 
 //Viết displayinfor dưới dạng functional component
 //Không còn hàm render()
@@ -46,6 +17,16 @@ const DisplayInfor = (props) => {
     let cloneList = props.users.filter((item) => item.id !== userId);
     props.setUsers(cloneList);
   };
+
+  //hàm useEffect chạy sau khi component render tương tự như didMount
+  //2 tham số, arg1 là callback func, arg2 là dependencies
+  //để chạy duy nhất 1 lần thì dependencies = []
+  useEffect(() => {
+    if (props.users.length === 0) {
+      alert("Bạn đã xóa hết user");
+    }
+    console.log("chạy user effect");
+  }, [props.users]); //khi thay đổi users thì sẽ chạy hàm useEffect này
 
   return (
     <div>
