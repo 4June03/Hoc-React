@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { increaseCounter, decreaseCounter } from "./redux/action/counterAction";
 import React from "react"; //Để viết class Component thì cần import thư viện React
 import Header from "./components/header/header";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, NavLink } from "react-router-dom";
 
 const App = () => {
   return (
