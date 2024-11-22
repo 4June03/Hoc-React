@@ -14,6 +14,7 @@ import {
 } from "react-router-dom";
 import Admin from "./components/Admin/Admin";
 import User from "./components/Users/User";
+import HomePage from "./components/home/HomePage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -22,6 +23,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
+          <Route index element={<HomePage />}></Route>
           <Route path="/user" element={<User />}></Route>
           <Route path="/admin" element={<Admin />}></Route>
         </Route>
