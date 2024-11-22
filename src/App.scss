@@ -14,8 +14,35 @@ code {
 
 .app-container{
   .header-container{
-    .navbar-nav{
+    button.btn-login {
+      border-radius: 6px;
+      margin-right: 12px;
+      padding: 0 22px;
+      opacity: unset;
+      border: 1px solid black;
+
+      &:hover{
+        opacity: 70%;
+      }
+  }
+
+  button.btn-signup {
+    border: 1px solid;
+    border-radius: 6px;
+    padding: 0 13px;
+    background-color: black;
+    color: white;
+
+    &:hover{
+      opacity: 70%;
+    }
+
+}
+
+    .navbar{
+      padding-top: 20px;
       z-index: 10;
+      background-color: moccasin;
       .nav-link{
         &.active{
           color: red;
